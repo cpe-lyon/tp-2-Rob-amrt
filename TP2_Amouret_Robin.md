@@ -43,9 +43,7 @@ Une valeur vide à une variable signifie que la variable existe toujours mais qu
 Commande : `echo "\$HOME = $HOME"`
 
 ## Exercice 2 : Contrôle de mot de passe
-###Écrivez un script testpwd.sh qui demande de saisir un mot de passe et vérifie s’il correspond ou non au
-contenu d’une variable PASSWORD dont le contenu est codé en dur dans le script. Le mot de passe saisi par
-l’utilisateur ne doit pas s’afficher.
+### Écrivez un script testpwd.sh qui demande de saisir un mot de passe et vérifie s’il correspond ou non au contenu d’une variable PASSWORD dont le contenu est codé en dur dans le script. Le mot de passe saisi par l’utilisateur ne doit pas s’afficher.
 
 ```
 #!/bin/bash
@@ -83,6 +81,7 @@ else
 fi
 ```
 ## Exercice 4. Contrôle d’utilisateur
+### Écrivez un script qui vérifie l’existence d’un utilisateur dont le nom est donné en paramètre du script. Si le script est appelé sans nom d’utilisateur, il affiche le message : ”Utilisation : nom_du_script nom_utilisateur”, où nom_du_script est le nom de votre script récupéré automatiquement (si vous changez le nom de votre script, le message doit changer automatiquement)
 
 ```
 #!/bin/bash
