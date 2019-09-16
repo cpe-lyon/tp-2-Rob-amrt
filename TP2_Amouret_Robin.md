@@ -33,4 +33,68 @@ Avec la commande `export MY_VAR="jsuismongole` cela transforme la variable local
 Nous créons la variable environnemental `NOMS` : `declare -x NOMS="Robin Eloi`
 Puis nous affichons la valeur de NOMS : `printenv NOMS` ce qui retourne `Robin Eloi`
 
+### 8. Ecrivez une commande qui affiche ”Bonjour à vous deux, binôme1 binôme2 !” (où binôme1 et binôme2 sont vos deux noms) en utilisant la variable NOMS
+La commande : `echo "Bonjour à vous deux ! $NOMS"`
+
+### 9. Quelle différence y a-t-il entre donner une valeur vide à une variable et l’utilisation de la commande unset ?
+Une valeur vide à une variable signifie que la variable existe toujours mais qu'elle ne contient rien, elle peut être utilisé comme tout autre variable existante. Cependant la commande unset SUPPRIME entièrement la variable, elle n'existe plus.
+
+### 10.Utilisez la commande echo pour écrire exactement la phrase : $HOME = chemin (où chemin est votre dossier personnel d’après bash)
+Commande : `echo "\$HOME = $HOME"`
+
+## Exercice 2 : Contrôle de mot de passe
+###Écrivez un script testpwd.sh qui demande de saisir un mot de passe et vérifie s’il correspond ou non au
+contenu d’une variable PASSWORD dont le contenu est codé en dur dans le script. Le mot de passe saisi par
+l’utilisateur ne doit pas s’afficher.
+
+```
+#!/bin/bash
+goodPassword="aze"
+read -s -p 'Veuillez saisir votre mot de passe : ' passwd
+
+if [ "$passwd" = "$goodPassword" ]; then
+        echo "Le mot de passe saisi concorde"
+else
+        echo "Le mot de pass saisi ne concorde pas"
+fi
+```
+
+## Exercice 3 : Expressions rationnelles
+
+```
+#!/bin/bash
+
+function is_number()
+{
+re='^[+-]?[0-9]+([.][0-9]+)?$'
+if ! [[ $1 =~ $re ]] ; then
+        return 1
+else
+        return 0
+fi
+}
+
+is_number $1
+
+if [ $? -eq 0 ]; then
+        echo "Le nombre est réel"
+else
+        echo "Le nombre n'est pas réel"
+fi
+```
+## Exercice 4. Contrôle d’utilisateur
+
+```
+#!/bin/bash
+if [ -z "$1" ]; then
+        echo "Utilisation : $0 nom_utilisateur"
+else
+        if [ $(id -u $1) ]; then
+                echo "L'utilisateur existe"
+        else
+                echo "L'utilisateur n'existe pas"
+        fi
+fi
+```
+
 
