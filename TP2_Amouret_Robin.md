@@ -6,6 +6,6 @@ Administration Système
 
 ## Exercice 1
 
-### Question 1 : Dans quels dossiers bash trouve-t-il les commandes tapées par l’utilisateur ?
+### 1. Question 1 : Dans quels dossiers bash trouve-t-il les commandes tapées par l’utilisateur ?
 
 Pour voir les dossiers dans lesquels Bash cherchent, il faut utiliser la commande : `printenv PATH`
