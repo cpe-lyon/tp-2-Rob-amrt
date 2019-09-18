@@ -96,4 +96,54 @@ else
 fi
 ```
 
+### Exercice 5. Factorielle
+Écrivez un programme qui calcule la factorielle d’un entier naturel passé en paramètre (on supposera que
+l’utilisateur saisit toujours un entier naturel).
+
+```
+#!/bin/bash
+
+nb=$1
+CALCUL=1
+
+while [ $nb -ge 1  ]
+do
+        CALCUL=$((nb*$CALCUL))
+        nb=$((nb-1))
+done
+
+echo "Le Factoriel de $1 est $CALCUL"
+```
+
+### Exercice 6. Le juste prix
+Écrivez un script qui génère un nombre aléatoire entre 1 et 1000 et demande à l’utilisateur de le deviner.
+Le programme écrira ”C’est plus !”, ”C’est moins !” ou ”Gagné !” selon les cas (vous utiliserez $RANDOM).
+
+```
+#!/bin/bash
+
+nb=$[ ( $RANDOM % 1000 ) +1 ]
+
+read -p "Le nombre à été généré ! Devinez le nombre : " input
+
+while [ $input -ne $nb ]
+do
+        if [ $input -lt $nb ]; then
+                read -p "C'est plus ! Retentez : " input
+        else
+                read -p "C'est moins ! Retentez : " input
+        fi
+done
+
+echo "Gagné ! Le nombre était bien $input !"
+```
+
+### Exercice 7. Statistiques
+1. Écrivez un script qui prend en paramètres trois entiers (entre -100 et +100) et affiche le min, le max
+et la moyenne. Vous pouvez réutiliser la fonction de l’exercice 3 pour vous assurer que les paramètres
+sont bien des entiers.
+2. Généralisez le programme à un nombre quelconque de paramètres (pensez à SHIFT)
+3. Modifiez votre programme pour que les notes ne soient plus données en paramètres, mais saisies et
+stockées au fur et à mesure dans un tableau.
+
 
