@@ -1,5 +1,5 @@
-# tp-2-Rob-amrt
-tp-2-Rob-amrt created by GitHub Classroom
+
+## Robin Amouret
 
 # TP2 CPE Lyon - 4ETI & 3IRC - Année 2018/19 Administration Système 
 
@@ -146,4 +146,59 @@ sont bien des entiers.
 3. Modifiez votre programme pour que les notes ne soient plus données en paramètres, mais saisies et
 stockées au fur et à mesure dans un tableau.
 
+```
+#!/bin/sh
 
+function reelounon()
+{
+        re='^[+-]?[0-9]+([.][0-9]+)?$'
+        if ! [[ $nb =~ $re ]] ; then
+                return 1
+        else
+                return 0
+        fi
+}
+
+keep=1
+nb=0
+i=0
+marks=()
+
+while [ $keep != 0 ]
+do
+        echo "entrez une note"
+        read nb
+
+        reelounon $nb
+        if [ "$?" != "0" ]; then
+                echo "merci d'entrer que des réels"
+        else
+                marks[$i]=$nb
+        fi
+
+        echo "continuer ? o / n"
+        read answer
+        if [ "$answer" = "n" ]; then
+                keep=0;
+        fi
+
+        ((i++))
+done
+
+mini=${marks[0]}
+maxi=${marks[0]}
+moy=0
+longueurtableau=${#marks[@]}
+for mark in "${marks[@]}"
+do
+        if [[ $mark < $mini ]]; then
+                mini=$mark
+        fi
+        if [[ $mark > $maxi ]]; then
+                maxi=$mark
+        fi
+        ((moy=moy+mark))
+done
+moy=$((moy / longueurtableau))
+echo "le max est $maxi, le min est $mini et la moyenne est de $moy"
+```
